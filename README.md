@@ -165,23 +165,29 @@ sudo nano /etc/apache2/sites-available/piducky.conf
   Errorlog ${APACHE_LOG_DIR}/error.log
   CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
-
+``` bash
 sudo a2dissite 000-default.conf
 sudo a2ensite piducky.conf
+```
 
 (c) Edit permissions :
+``` bash
 sudo nano /etc/apache2/envvars
 export APACHE_RUN_USER=dietpi
 export APACHE_RUN_GROUP=dietpi
 sudo chown -R -f dietpi:dietpi /var/www/piducky
-
+```
+``` bash
 sudo usermod -a -G dietpi www-data
 sudo chmod +w /etc/sudoers
 sudo nano /etc/sudoers
+```
 dietpi ALL=(ALL) NOPASSWD:ALL
 www-data ALL=(ALL) NOPASSWD:ALL
 %dietpi ALL= (ALL:ALL) ALL
+``` bash
 sudo chmod -w /etc/sudoers
+```
 
 Note :
 * The user 'www-data' should belong to 'dietpi' group
