@@ -1,4 +1,5 @@
-1. Flashing and setting up DietPi headlessly :
+# Instructions to build from scratch
+## 1. Flashing and setting up DietPi headlessly :
 
 (a) Download DietPi for the raspberry pi zero/zero2 w : dietpi.com/#download
 
@@ -11,10 +12,12 @@
 (e) Now boot the raspberry pi with the flased sdcard.
 
 
-2. Setting up wifi-hotspot with hostapd :
+## 2. Setting up wifi-hotspot with hostapd :
 
 (a) Install dhcpd :
+``` bash
 sudo apt-get install dhcpcd5.
+```
 
 (b) Edit the dhcpcd config :
 sudo nano /etc/dhcpcd.conf
