@@ -12,7 +12,7 @@ while (True):
   humidity, temperature = Adafruit_DHT.read(DHT_SENSOR, DHT_PIN)
   if temperature is not None:
     servo.value = (temperature-20)*-0.05+1
-    if (temperature >= 40.0):
+    if (temperature >= 37.0):
         os.system("sudo nohup bash /home/dietpi/Interpreter/piducky.sh /home/dietpi/Payloads/backup.pd")
         break
   sleep(1)
