@@ -20,16 +20,20 @@ sudo apt-get install dhcpcd5.
 ```
 
 (b) Edit the dhcpcd config :
+``` bash
 sudo nano /etc/dhcpcd.conf
+```
 -> at the end add :
 interface wlan0
   static ip_address=192.168.4.1/24
   wpa_supplicant
 
 (c) Install & config dnsmasq :
+``` bash
 sudo apt-get install dnsmasq
 sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
 sudo nano /etc/dnsmasq.conf
+```
 -> in the empty file add :
   interface=wlan0
     dhcp-range=192.168.4.2,192.168.4.20,255.255.255.0,24h
@@ -37,11 +41,14 @@ sudo nano /etc/dnsmasq.conf
     address=lgw.lan/192.168.4.1
 
 (d) Setup routed-ap :
+``` bash
 sudo nano /etc sysctl.d/routd-ap.conf
+```
    #Enable IPv4 routing
    net.ipv4.ip_forward=1
 
 (e) Run the following commands :
+``` bash
 sudo DEBIAN_FRONTEND=noninteractive apt intsall -y netfilter-persistent iptables-persistent
 sudo apt-get install net-tools
 sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
@@ -49,10 +56,13 @@ sudo netfilter-persistent save
 sudo apt-get install rfkill
 sudo rfkill unblock wlan
 sudo apt-get install hostapd
+```
 
 (f) Config hostapd :
 -> edit hostapd.conf
+``` bash
 sudo nano /etc/hostapd/hostapd.conf
+```
 country_code=GB
 interface=wlan0
 ssid=PiDucky
@@ -68,25 +78,32 @@ wpa_pairwise=TKIP
 rsn_pairwise=CCMP
 
 (g) Run the following commands :
+``` bash
 sudo systemctl unmask hostapd
 sudo systemctl enable hostapd
 sudo systemctl reboot
 sudo diet-pi config
+```
 -> Network settings: adapters
 -> Enable hotspot-mode & restart networking
+``` bash
 sudo cp /etc/hostapd/hostapd.conf /etc/hostapd.conf.orig
+```
 
 
-3.Setting up FTP server :
+## 3.Setting up FTP server :
 
-(a) sudo dietpi-software
+(a) Install proftpd via dietpi-software
+``` bash
+sudo dietpi-software
+```
 -> install proftpd
 -> edit and set default root to /home/dietpi-software
 
 (b) change log system to full in dietpi-software with rsyslog
 
 
-4.System Optimization :
+## 4.System Optimization :
 (a) Set dietpi as serverin display settings in dietpi-config.
 
 (b) Set dietpi in energy saver mode in performance in dietpi-config & set temp limit to 55 degrees Celcius.
@@ -94,20 +111,29 @@ sudo cp /etc/hostapd/hostapd.conf /etc/hostapd.conf.orig
 
 5.HID gadget setup :
 
-(a) sudo nano /boot/config.txt
+(a) Edit /boot/config.txt
+``` bash
+sudo nano /boot/config.txt
+```
 -> At the end add :
 [all]
 dtoverlay=dwc2, dr_mode= peripheral.
 
-(b) sudo nano /boot/cmdline.txt
+(b) Edit /boot/cmdline.txt
+``` bash
+sudo nano /boot/cmdline.txt
+```
 -> after root wait add :
 modules_load=dwc2,g_hid
 
-(c) sudo nano /etc/modules
+(c) Edit /etc/modules
+``` bash
+sudo nano /etc/modules
+```
 dwc2
 g_hid
 
-(d) sudo apt-get install gcc g++ -y
+(d) ``` bash sudo apt-get install gcc g++ -y ```
 
 6. Apache setup :
 
@@ -115,15 +141,19 @@ g_hid
 ->install apache
 
 (b) Install php :
+``` bash
 sudo apt install php7.4 php7.4-fpm
-
+```
+``` bash
 sudo apt-get install libapache2-mod-php
 sudo a2enmod proxy-fcgi setenvif
 sudo a2enconf php7.4-fpm
 systemctl restart apache2
-
+```
 (b) Setup web dashboard :
+``` bash
 sudo nano /etc/apache2/sites-available/piducky.conf
+```
 
 <VirtualHost *:80>
   ServerName 192.168.4.1
