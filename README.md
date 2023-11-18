@@ -1,5 +1,6 @@
 # AutoRasp
 ![AutoRasp](https://github.com/Cr4zySh4rk/AutoRasp/assets/75577562/2aadeffc-d44c-44fa-bf4d-57f81c833790)
+![WhatsApp Image 2023-11-18 at 10 01 23](https://github.com/Cr4zySh4rk/AutoRasp/assets/75577562/bf00dab8-4382-48d7-bc15-8a54b60d1b75)
 
 ## Instructions to build from scratch
 ## 1. Flashing and setting up DietPi headlessly :
