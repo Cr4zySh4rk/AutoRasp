@@ -1,4 +1,10 @@
-# Instructions to build from scratch
+# AutoRasp
+
+
+https://github.com/Cr4zySh4rk/AutoRasp/assets/75577562/c06af014-fc54-4184-bbe8-217c5f22e7eb
+
+
+## Instructions to build from scratch
 ## 1. Flashing and setting up DietPi headlessly :
 
 (a) Download DietPi for the raspberry pi zero/zero2 w : dietpi.com/#download
