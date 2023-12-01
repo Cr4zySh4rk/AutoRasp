@@ -143,7 +143,7 @@ sudo nano /boot/config.txt
 -> At the end add :
 ```
 [all]
-dtoverlay=dwc2, dr_mode= peripheral.
+dtoverlay=dwc2, dr_mode=peripheral
 ```
 (b) Edit /boot/cmdline.txt
 ``` bash
