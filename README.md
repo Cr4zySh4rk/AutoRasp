@@ -44,12 +44,11 @@ sudo nano /etc/dnsmasq.conf
     domain=wlan
     address=lgw.lan/192.168.4.1
 
-(d) Setup routed-ap :
+(d) Enable IPv4 packet forwarding :
 ``` bash
-sudo nano /etc sysctl.d/routd-ap.conf
+sudo nano /etc/sysctl.conf
 ```
-   #Enable IPv4 routing
-   net.ipv4.ip_forward=1
+   Change #net.ipv4.ip_forward=1 to net.ipv4.ip_forward=1
 
 (e) Run the following commands :
 ``` bash
