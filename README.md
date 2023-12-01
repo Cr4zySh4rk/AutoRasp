@@ -157,12 +157,12 @@ sudo apt-get install gcc g++ -y
 
 (b) Install php :
 ``` bash
-sudo apt install php7.4 php7.4-fpm
+sudo apt install php8.2 php8.2-fpm
 ```
 ``` bash
 sudo apt-get install libapache2-mod-php
 sudo a2enmod proxy-fcgi setenvif
-sudo a2enconf php7.4-fpm
+sudo a2enconf php8.2-fpm
 systemctl restart apache2
 ```
 (b) Setup web dashboard :
