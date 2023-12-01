@@ -28,10 +28,11 @@ sudo apt-get install dhcpcd5
 sudo nano /etc/dhcpcd.conf
 ```
 -> at the end add :
+```
 interface wlan0
   static ip_address=192.168.4.1/24
   wpa_supplicant
-
+```
 (c) Install & config dnsmasq :
 ``` bash
 sudo apt-get install dnsmasq
