@@ -52,7 +52,7 @@ sudo nano /etc/sysctl.conf
 
 (e) Run the following commands :
 ``` bash
-sudo DEBIAN_FRONTEND=noninteractive apt intsall -y netfilter-persistent iptables-persistent
+sudo DEBIAN_FRONTEND=noninteractive apt install -y netfilter-persistent iptables-persistent
 sudo apt-get install net-tools
 sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 sudo netfilter-persistent save
