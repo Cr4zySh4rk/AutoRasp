@@ -40,11 +40,12 @@ sudo mv /etc/dnsmasq.conf /etc/dnsmasq.conf.orig
 sudo nano /etc/dnsmasq.conf
 ```
 -> in the empty file add :
+```
   interface=wlan0
     dhcp-range=192.168.4.2,192.168.4.20,255.255.255.0,24h
     domain=wlan
     address=lgw.lan/192.168.4.1
-
+```
 (d) Enable IPv4 packet forwarding :
 ``` bash
 sudo nano /etc/sysctl.conf
