@@ -44,3 +44,5 @@ chmod 777 /dev/hidg0
 ifconfig usb0 10.0.0.1 netmask 255.255.255.252 up
 route add -net default gw 10.0.0.2
 
+sudo hostapd /etc/hostapd/hostapd.conf &
+iptables-restore < /etc/iptables.ipv4.nat
