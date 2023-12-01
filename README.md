@@ -136,7 +136,9 @@ sudo nano /etc/modules
 dwc2
 g_hid
 
-(d) ``` bash sudo apt-get install gcc g++ -y ```
+(d) ``` bash 
+sudo apt-get install gcc g++ -y
+```
 
 6. Apache setup :
 
