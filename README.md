@@ -66,7 +66,7 @@ sudo apt-get install hostapd
 ``` bash
 sudo nano /etc/hostapd/hostapd.conf
 ```
-
+Paste the following:
 ```
 country_code=GB
 interface=wlan0
@@ -122,22 +122,28 @@ sudo dietpi-software
 sudo nano /boot/config.txt
 ```
 -> At the end add :
+```
 [all]
 dtoverlay=dwc2, dr_mode= peripheral.
-
+```
 (b) Edit /boot/cmdline.txt
 ``` bash
 sudo nano /boot/cmdline.txt
 ```
 -> after root wait add :
+```
 modules_load=dwc2,g_hid
+```
 
 (c) Edit /etc/modules
 ``` bash
 sudo nano /etc/modules
 ```
+add:
+```
 dwc2
 g_hid
+```
 
 (d) Install gcc and g++
 ``` bash
@@ -163,7 +169,8 @@ systemctl restart apache2
 ``` bash
 sudo nano /etc/apache2/sites-available/piducky.conf
 ```
-
+past the following:
+```
 <VirtualHost *:80>
   ServerName 192.168.4.1
   ServerAlias piducky
@@ -174,6 +181,7 @@ sudo nano /etc/apache2/sites-available/piducky.conf
   Errorlog ${APACHE_LOG_DIR}/error.log
   CustomLog ${APACHE_LOG_DIR}/access.log combined
 </VirtualHost>
+```
 ``` bash
 sudo a2dissite 000-default.conf
 sudo a2ensite piducky.conf
@@ -191,9 +199,12 @@ sudo usermod -a -G dietpi www-data
 sudo chmod +w /etc/sudoers
 sudo nano /etc/sudoers
 ```
+paste:
+```
 dietpi ALL=(ALL) NOPASSWD:ALL
 www-data ALL=(ALL) NOPASSWD:ALL
 %dietpi ALL= (ALL:ALL) ALL
+```
 ``` bash
 sudo chmod -w /etc/sudoers
 ```
