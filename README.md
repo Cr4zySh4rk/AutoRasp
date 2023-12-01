@@ -29,7 +29,7 @@ git clone https://github.com/Cr4zySh4rk/AutoRasp.git
 
 (b) Move files into home directory :
 ``` bash
-mv -R AutoRasp/* ~/
+mv AutoRasp/* ~/
 rm -rf Autorasp
 ```
 
