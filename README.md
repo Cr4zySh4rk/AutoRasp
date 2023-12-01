@@ -15,7 +15,7 @@
 
 (e) Now boot the raspberry pi with the flased sdcard.
 
-## 2. Cloning the repo :
+## 2. Cloning the repo & setting up AutoRasp :
 
 (a) Install git
 ``` bash
@@ -27,13 +27,14 @@ sudo apt-get install git
 git clone https://github.com/Cr4zySh4rk/AutoRasp.git
 ```
 
-(b) Move files into home directory :
+(c) Copy contents of Web into /var/www/piducky :
 ``` bash
-mv AutoRasp/* ~/
-rm -rf AutoRasp
+sudo mkdir /var/www/piducky
+cp -R Web/* /var/www/piducky
 ```
 
-5.HID gadget setup :
+
+## 3.HID gadget setup :
 
 (a) Edit /boot/config.txt
 ``` bash
