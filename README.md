@@ -15,6 +15,17 @@
 
 (e) Now boot the raspberry pi with the flased sdcard.
 
+## 2. Cloning the repo :
+
+(a) Install git
+``` bash
+sudo apt-get install git
+```
+
+(b) Clone repo
+``` bash
+git clone https://github.com/Cr4zySh4rk/AutoRasp.git
+```
 
 ## 2. Setting up wifi-hotspot with hostapd :
 
