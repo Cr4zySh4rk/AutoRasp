@@ -33,6 +33,13 @@ sudo mkdir /var/www/piducky
 sudo cp -R Web/* /var/www/piducky
 ```
 
+(d) Compile files in Interpreter directory :
+``` bash
+gcc usbkeymap.c -o usbkeymap
+gcc usleep.c -o usleep
+chmod +x piducky.sh
+```
+
 
 ## 3. HID gadget setup :
 
