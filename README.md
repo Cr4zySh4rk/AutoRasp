@@ -66,6 +66,8 @@ sudo apt-get install hostapd
 ``` bash
 sudo nano /etc/hostapd/hostapd.conf
 ```
+
+```
 country_code=GB
 interface=wlan0
 ssid=PiDucky
@@ -79,6 +81,7 @@ wpa_passphrase=raspberry
 wpa_key_mgmt=WPA-PSK
 wpa_pairwise=TKIP
 rsn_pairwise=CCMP
+```
 
 (g) Run the following commands :
 ``` bash
