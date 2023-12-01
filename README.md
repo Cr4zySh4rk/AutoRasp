@@ -190,8 +190,13 @@ sudo a2ensite piducky.conf
 (c) Edit permissions :
 ``` bash
 sudo nano /etc/apache2/envvars
+```
+Edit lines as such:
+```
 export APACHE_RUN_USER=dietpi
 export APACHE_RUN_GROUP=dietpi
+```
+``` bash
 sudo chown -R -f dietpi:dietpi /var/www/piducky
 ```
 ``` bash
