@@ -22,9 +22,15 @@
 sudo apt-get install git
 ```
 
-(b) Clone repo
+(b) Clone the repo :
 ``` bash
 git clone https://github.com/Cr4zySh4rk/AutoRasp.git
+```
+
+(b) Move files into home directory :
+``` bash
+mv -R AutoRasp/* ~/
+rm -rf Autorasp
 ```
 
 ## 2. Setting up wifi-hotspot with hostapd :
