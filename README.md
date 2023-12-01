@@ -30,7 +30,7 @@ git clone https://github.com/Cr4zySh4rk/AutoRasp.git
 (b) Move files into home directory :
 ``` bash
 mv AutoRasp/* ~/
-rm -rf Autorasp
+rm -rf AutoRasp
 ```
 
 ## 2. Setting up wifi-hotspot with hostapd :
