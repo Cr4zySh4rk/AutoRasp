@@ -33,7 +33,121 @@ mv AutoRasp/* ~/
 rm -rf AutoRasp
 ```
 
-## 2. Setting up wifi-hotspot with hostapd :
+5.HID gadget setup :
+
+(a) Edit /boot/config.txt
+``` bash
+sudo nano /boot/config.txt
+```
+-> At the end add :
+```
+[all]
+dtoverlay=dwc2, dr_mode=peripheral
+```
+(b) Edit /boot/cmdline.txt
+``` bash
+sudo nano /boot/cmdline.txt
+```
+-> after root wait add :
+```
+modules_load=dwc2,g_hid
+```
+
+(c) Edit /etc/modules
+``` bash
+sudo nano /etc/modules
+```
+add:
+```
+dwc2
+g_hid
+```
+
+(d) Install gcc and g++
+``` bash
+sudo apt-get install gcc g++ -y
+```
+
+3. Apache setup :
+
+(a) Install apache : -> sudo dietpi-software
+->install apache
+
+(b) Install php :
+``` bash
+sudo apt install php8.2 php8.2-fpm
+```
+``` bash
+sudo apt-get install libapache2-mod-php
+sudo a2enmod proxy-fcgi setenvif
+sudo a2enconf php8.2-fpm
+systemctl restart apache2
+```
+(b) Setup web dashboard :
+``` bash
+sudo nano /etc/apache2/sites-available/piducky.conf
+```
+past the following:
+```
+<VirtualHost *:80>
+  ServerName 192.168.4.1
+  ServerAlias piducky
+  DocumentRoot /var/www/piducky
+  <FilesMatch ".php$">
+  SetHandler "proxy:unix:/var/run/php/php7.4-fpm.sock|fcgi://192.168.4.1/"
+  </FilesMatch>
+  Errorlog ${APACHE_LOG_DIR}/error.log
+  CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+``` bash
+sudo a2dissite 000-default.conf
+sudo a2ensite piducky.conf
+```
+
+(c) Edit permissions :
+``` bash
+sudo nano /etc/apache2/envvars
+```
+Edit lines as such:
+```
+export APACHE_RUN_USER=dietpi
+export APACHE_RUN_GROUP=dietpi
+```
+``` bash
+sudo chown -R -f dietpi:dietpi /var/www/piducky
+```
+``` bash
+sudo usermod -a -G dietpi www-data
+sudo chmod +w /etc/sudoers
+sudo nano /etc/sudoers
+```
+paste:
+```
+dietpi ALL=(ALL) NOPASSWD:ALL
+www-data ALL=(ALL) NOPASSWD:ALL
+%dietpi ALL= (ALL:ALL) ALL
+```
+``` bash
+sudo chmod -w /etc/sudoers
+```
+
+Note :
+* The user 'www-data' should belong to 'dietpi' group
+'dietpi' should be able to setup for passwordless sudo.
+
+## 4.Setting up FTP server :
+
+(a) Install proftpd via dietpi-software
+``` bash
+sudo dietpi-software
+```
+-> install proftpd
+-> edit and set default root to /home/dietpi-software
+
+(b) change log system to full in dietpi-software with rsyslog
+
+## 5. Setting up wifi-hotspot with hostapd :
 
 (a) Install dhcpd :
 ``` bash
@@ -115,124 +229,7 @@ sudo diet-pi config
 sudo cp /etc/hostapd/hostapd.conf /etc/hostapd.conf.orig
 ```
 
-
-## 3.Setting up FTP server :
-
-(a) Install proftpd via dietpi-software
-``` bash
-sudo dietpi-software
-```
--> install proftpd
--> edit and set default root to /home/dietpi-software
-
-(b) change log system to full in dietpi-software with rsyslog
-
-
-## 4.System Optimization :
+## 6.System Optimization :
 (a) Set dietpi as server in display settings in dietpi-config.
 
 (b) Set dietpi in energy saver mode in performance in dietpi-config & set temp limit to 55 degrees Celcius.
-
-
-5.HID gadget setup :
-
-(a) Edit /boot/config.txt
-``` bash
-sudo nano /boot/config.txt
-```
--> At the end add :
-```
-[all]
-dtoverlay=dwc2, dr_mode=peripheral
-```
-(b) Edit /boot/cmdline.txt
-``` bash
-sudo nano /boot/cmdline.txt
-```
--> after root wait add :
-```
-modules_load=dwc2,g_hid
-```
-
-(c) Edit /etc/modules
-``` bash
-sudo nano /etc/modules
-```
-add:
-```
-dwc2
-g_hid
-```
-
-(d) Install gcc and g++
-``` bash
-sudo apt-get install gcc g++ -y
-```
-
-6. Apache setup :
-
-(a) Install apache : -> sudo dietpi-software
-->install apache
-
-(b) Install php :
-``` bash
-sudo apt install php8.2 php8.2-fpm
-```
-``` bash
-sudo apt-get install libapache2-mod-php
-sudo a2enmod proxy-fcgi setenvif
-sudo a2enconf php8.2-fpm
-systemctl restart apache2
-```
-(b) Setup web dashboard :
-``` bash
-sudo nano /etc/apache2/sites-available/piducky.conf
-```
-past the following:
-```
-<VirtualHost *:80>
-  ServerName 192.168.4.1
-  ServerAlias piducky
-  DocumentRoot /var/www/piducky
-  <FilesMatch ".php$">
-  SetHandler "proxy:unix:/var/run/php/php7.4-fpm.sock|fcgi://192.168.4.1/"
-  </FilesMatch>
-  Errorlog ${APACHE_LOG_DIR}/error.log
-  CustomLog ${APACHE_LOG_DIR}/access.log combined
-</VirtualHost>
-```
-``` bash
-sudo a2dissite 000-default.conf
-sudo a2ensite piducky.conf
-```
-
-(c) Edit permissions :
-``` bash
-sudo nano /etc/apache2/envvars
-```
-Edit lines as such:
-```
-export APACHE_RUN_USER=dietpi
-export APACHE_RUN_GROUP=dietpi
-```
-``` bash
-sudo chown -R -f dietpi:dietpi /var/www/piducky
-```
-``` bash
-sudo usermod -a -G dietpi www-data
-sudo chmod +w /etc/sudoers
-sudo nano /etc/sudoers
-```
-paste:
-```
-dietpi ALL=(ALL) NOPASSWD:ALL
-www-data ALL=(ALL) NOPASSWD:ALL
-%dietpi ALL= (ALL:ALL) ALL
-```
-``` bash
-sudo chmod -w /etc/sudoers
-```
-
-Note :
-* The user 'www-data' should belong to 'dietpi' group
-'dietpi' should be able to setup for passwordless sudo.
