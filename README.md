@@ -46,6 +46,10 @@ chmod +x *
 sudo ./hidsetup.sh
 ```
 
+(e) Copt hidsetup.sh into /var/lib/dietpi/postboot.d :
+``` bash
+sudo cp hidsetup.sh /var/lib/dietpi/postboot.d
+```
 
 ## 3. HID gadget setup :
 
