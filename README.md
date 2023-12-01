@@ -20,7 +20,7 @@
 
 (a) Install dhcpd :
 ``` bash
-sudo apt-get install dhcpcd5.
+sudo apt-get install dhcpcd5
 ```
 
 (b) Edit the dhcpcd config :
