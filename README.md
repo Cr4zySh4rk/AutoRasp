@@ -41,7 +41,7 @@ sudo nano /etc/dnsmasq.conf
 ```
 -> in the empty file add :
 ```
-  interface=wlan0
+interface=wlan0
     dhcp-range=192.168.4.2,192.168.4.20,255.255.255.0,24h
     domain=wlan
     address=lgw.lan/192.168.4.1
