@@ -235,7 +235,7 @@ rsn_pairwise=CCMP
 sudo systemctl unmask hostapd
 sudo systemctl enable hostapd
 sudo systemctl reboot
-sudo diet-pi config
+sudo dietpi-config
 ```
 -> Network settings: adapters
 -> Enable hotspot-mode & restart networking
