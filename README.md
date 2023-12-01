@@ -107,7 +107,7 @@ sudo dietpi-software
 
 
 ## 4.System Optimization :
-(a) Set dietpi as serverin display settings in dietpi-config.
+(a) Set dietpi as server in display settings in dietpi-config.
 
 (b) Set dietpi in energy saver mode in performance in dietpi-config & set temp limit to 55 degrees Celcius.
 
