@@ -193,7 +193,7 @@ sudo nano /etc/dnsmasq.conf
 interface=wlan0
     dhcp-range=192.168.4.2,192.168.4.20,255.255.255.0,24h
     domain=wlan
-    address=lgw.lan/192.168.4.1
+    address=/piducky.lan/192.168.4.1
 ```
 (d) Enable IPv4 packet forwarding :
 ``` bash
