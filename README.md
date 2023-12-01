@@ -136,7 +136,8 @@ sudo nano /etc/modules
 dwc2
 g_hid
 
-(d) ``` bash
+(d) Install gcc and g++
+``` bash
 sudo apt-get install gcc g++ -y
 ```
 
