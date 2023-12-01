@@ -30,11 +30,11 @@ git clone https://github.com/Cr4zySh4rk/AutoRasp.git
 (c) Copy contents of Web into /var/www/piducky :
 ``` bash
 sudo mkdir /var/www/piducky
-cp -R Web/* /var/www/piducky
+sudo cp -R Web/* /var/www/piducky
 ```
 
 
-## 3.HID gadget setup :
+## 3. HID gadget setup :
 
 (a) Edit /boot/config.txt
 ``` bash
