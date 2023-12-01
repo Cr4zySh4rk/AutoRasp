@@ -40,6 +40,12 @@ gcc usleep.c -o usleep
 chmod +x piducky.sh
 ```
 
+(d) Run setup scripts in Scripts directory :
+``` bash
+chmod +x *
+sudo ./hidsetup.sh
+```
+
 
 ## 3. HID gadget setup :
 
